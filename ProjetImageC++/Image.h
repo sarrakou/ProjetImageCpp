@@ -1,10 +1,14 @@
 #pragma once
 #include "stb_image.h"
 #include <vector>
+#include <cstdint>
+#include <iomanip>
 #include <string>
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
+
+using namespace std;
 
 class Image
 {
