@@ -6,49 +6,41 @@
 #include <string>
 #include <cstdlib>
 #include <filesystem>
+
 namespace fs = std::filesystem;
 
-int ChargeImage() {
-    // Solicitar al usuario que seleccione un archivo
-    std::string nombreArchivo;
-    std::cout << "Por favor, introduce la ruta del archivo: ";
-    std::cin >> nombreArchivo;
-
-    // Verificar si el archivo existe
-    fs::path rutaArchivo(nombreArchivo);
-    if (fs::exists(rutaArchivo) && fs::is_regular_file(rutaArchivo)) {
-        std::cout << "El archivo seleccionado existe: " << rutaArchivo << std::endl;
-    }
-    else {
-        std::cerr << "El archivo especificado no existe o no es un archivo regular." << std::endl;
-    }
-    return 0;
-}
 void additionAvecUnValeur(Image img) {
     // Exemple d'addition avec une valeur
     Image imgAddedValue = img + 50; // Augmente la luminosité
     // Sauvegarde de l'image après addition
-    if (!imgAddedValue.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_added_value.jpg", "jpg")) {
+    if (!imgAddedValue.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_added_value.jpg", "jpg")) {
         std::cerr << "Failed to save image with added value" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_added_value.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
 void additionAvecUnPixel(Image img) {
     // Exemple d'addition avec une valeur
     std::vector<unsigned char> addPixel(3, 30);
     Image imgAddedPixel = img + addPixel; // Augmente la luminosité
     // Sauvegarde de l'image après addition
-    if (!imgAddedPixel.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_added_pixel.jpg", "jpg")) {
+    if (!imgAddedPixel.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_added_pixel.jpg", "jpg")) {
         std::cerr << "Failed to save image with added value" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_added_pixel.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
 void soustractionAvecUnValeur(Image img) {
     // Exemple de soustraction avec un pixel// Soustrait une petite valeur de chaque canal RGB
     Image imgSubtractedValeur = img - 50;
 
     // Sauvegarde de l'image après soustraction
-    if (!imgSubtractedValeur.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_subtracted_value.jpg", "jpg")) {
+    if (!imgSubtractedValeur.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_subtracted_value.jpg", "jpg")) {
         std::cerr << "Failed to save image with subtracted pixel" << std::endl;
     }
+
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_subtracted_value.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
 void soustractionPixel(Image img) {
     // Exemple de soustraction avec un pixel
@@ -56,37 +48,107 @@ void soustractionPixel(Image img) {
     Image imgSubtractedPixel = img - subtractPixel;
 
     // Sauvegarde de l'image après soustraction
-    if (!imgSubtractedPixel.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_subtracted_pixel.jpg", "jpg")) {
+    if (!imgSubtractedPixel.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_subtracted_pixel.jpg", "jpg")) {
         std::cerr << "Failed to save image with subtracted pixel" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_subtracted_pixel.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+}
+void differenceAvecUnValeur(Image img) {
+    // Exemple de soustraction avec un pixel// Soustrait une petite valeur de chaque canal RGB
+    Image imgdifferenceValeur = img ^ 50;
+
+    // Sauvegarde de l'image après soustraction
+    if (!imgdifferenceValeur.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_difference_value.jpg", "jpg")) {
+        std::cerr << "Failed to save image with subtracted pixel" << std::endl;
+    }
+
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_difference_value.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+}
+void differencePixel(Image img) {
+    // Exemple de soustraction avec un pixel
+    std::vector<unsigned char> differencePixel(3, 30); // Soustrait une petite valeur de chaque canal RGB
+    Image imgDifferencedPixel = img ^ differencePixel;
+
+    // Sauvegarde de l'image après soustraction
+    if (!imgDifferencedPixel.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_difference_pixel.jpg", "jpg")) {
+        std::cerr << "Failed to save image with subtracted pixel" << std::endl;
+    }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_difference_pixel.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
 void multiplicationValeur(Image img) {
     // Exemple d'inversion des valeurs de l'image
     Image imgMult = img * 20;
 
     // Sauvegarde de l'image après inversion
-    if (!imgMult.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_mult.jpg", "jpg")) {
+    if (!imgMult.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_mult.jpg", "jpg")) {
         std::cerr << "Failed to save inverted image" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_mult.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+
 }
 void divisionValeur(Image img) {
     // Exemple d'inversion des valeurs de l'image
     Image imgDiv = img / 20;
 
     // Sauvegarde de l'image après inversion
-    if (!imgDiv.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_div.jpg", "jpg")) {
+    if (!imgDiv.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_div.jpg", "jpg")) {
         std::cerr << "Failed to save inverted image" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_div.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
 void inversionDesValeur(Image img) {
     // Exemple d'inversion des valeurs de l'image
     Image imgInverted = ~img;
 
     // Sauvegarde de l'image après inversion
-    if (!imgInverted.saveImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/Salida/result_inverted.jpg", "jpg")) {
+    if (!imgInverted.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_inverted.jpg", "jpg")) {
         std::cerr << "Failed to save inverted image" << std::endl;
     }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_inverted.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
 }
+void addition2Images(Image img1, Image img2) {
+
+    // Realizar operaciones de suma y resta
+    Image suma = img1 + img2; // Suma de imágenes
+
+    // Sauvegarde de l'image après inversion
+    if (!suma.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_addition_images.jpg", "jpg")) {
+        std::cerr << "Failed to save inverted image" << std::endl;
+    }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_addition_images.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+}
+void soustraction2Images(Image img1, Image img2) {
+
+    // Realizar operaciones de suma y resta
+    Image suma = img1 - img2; // Suma de imágenes
+
+    // Sauvegarde de l'image après inversion
+    if (!suma.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_soustraction_images.jpg", "jpg")) {
+        std::cerr << "Failed to save inverted image" << std::endl;
+    }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_soustraction_images.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+}
+void difference2Images(Image img1, Image img2) {
+
+    // Realizar la diferencia entre las imágenes
+    Image diferencia = img1 ^ img2;
+
+    // Sauvegarde de l'image après inversion
+    if (!diferencia.saveImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/result_diferencia_images.jpg", "jpg")) {
+        std::cerr << "Failed to save inverted image" << std::endl;
+    }
+    fs::path rutaCarpeta = "C:\\Users\\adria\\OneDrive\\Documentos\\ESGI\\C++\\images\\result_diferencia_images.jpg";
+    system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
+}
+
 std::string convertirRuta(const std::string& ruta) {
     std::string rutaConvertida = ruta;
     std::replace(rutaConvertida.begin(), rutaConvertida.end(), '/', '\\');
@@ -95,8 +157,9 @@ std::string convertirRuta(const std::string& ruta) {
 int main()
 {
     Image img;
+    Image img2;
     int op=-1;  
-    // Mostrar el cuadro de diálogo del explorador de archivos
+   /* // Mostrar el cuadro de diálogo del explorador de archivos
     std::cout << "Por favor, selecciona una imagen." << std::endl;
     system("explorer /select, \"%UserProfile%\\Pictures\"");
 
@@ -120,11 +183,15 @@ int main()
     }
     else {
         std::cerr << "El archivo especificado no existe o no es un archivo regular." << std::endl;
+    }*/
+
+    // Chargement d'une image
+    if (!img.loadImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/lobo.jpg")) {
+        std::cerr << "Failed to load image" << std::endl;
     }
-    //// Chargement d'une image
-    //if (!img.loadImage("D:/Adriana/ESGI/Cursos/C++/projet final/Imagenes/original/lobo.jpg")) {
-    //    std::cerr << "Failed to load image" << std::endl;
-    //}
+    if (!img2.loadImage("C:/Users/adria/OneDrive/Documentos/ESGI/C++/images/paisaje.jpg")) {
+        std::cerr << "Failed to load image" << std::endl;
+    }
 
     // Affichage des propriétés de l'image chargée
     std::cout << "Loaded image with dimensions: " << img.getWidth() << "x" << img.getHeight()
@@ -140,11 +207,13 @@ int main()
         std::cout << "5. Multiplication avec une valeur. " << std::endl;
         std::cout << "6. Division avec une valeur. " << std::endl;
         std::cout << "7. Inversement. " << std::endl;
+        std::cout << "8. Difference avec un valeur." << std::endl;
+        std::cout << "9. Difference avec un pixel." << std::endl;
+        std::cout << "10. Addition 2 images. " << std::endl;
+        std::cout << "11. Soustraction 2 images. " << std::endl;
+        std::cout << "12. Difference 2 images. " << std::endl;
         std::cin >> op;
         switch (op) {
-        case 0:
-            ChargeImage();
-            break;
         case 1:
             additionAvecUnValeur(img);
             break;
@@ -166,12 +235,25 @@ int main()
         case 7:
             inversionDesValeur(img);
             break;
-
-
+        case 8:
+            differenceAvecUnValeur(img);
+            break;
+        case 9:
+            differencePixel(img);
+            break;
+        case 10:
+            addition2Images(img, img2);
+            break;
+        case 11:
+            soustraction2Images(img, img2);
+            break;
+        case 12:
+            difference2Images(img, img2);
+            break;
+        case 13:
+            soustraction2Images(img, img2);
+            break;
         }
-        
-        fs::path rutaCarpeta = "D:\\Adriana\\ESGI\\Cursos\\C++\\projet final\\Imagenes\\Salida\\result_added_value.jpg";
-        system(("start explorer \"" + rutaCarpeta.string() + "\"").c_str());
     }
     
     

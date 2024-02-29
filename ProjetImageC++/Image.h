@@ -189,6 +189,17 @@ public:
         return *this;
     }
 
+    // Sobrecarga del operador ^= para calcular la diferencia entre una imagen y un píxel
+    Image& operator^(const std::vector<unsigned char>& pixelValues) {
+        // Crear una imagen que represente el píxel de diferencia
+        Image pixelImage(this->width, this->height, this->channels, this->model, pixelValues);
+
+        // Calcular la diferencia entre la imagen actual y el píxel de diferencia utilizando la operación XOR
+        *this = *this ^ pixelImage;
+
+        return *this;
+    }
+
     //Même logique que la soustraction mais avec la valeur absolue
     Image absoluteDifference(const std::vector<unsigned char>& pixelValues) const {
         if (pixelValues.size() != channels) {
@@ -205,8 +216,6 @@ public:
         }
         return result;
     }
-
-
 
     //Multiplication
     Image operator*(float value) const {
@@ -251,6 +260,7 @@ public:
         }
         return result;
     }
+
 
     // Surcharge de l'opérateur << pour l'affichage
     friend std::ostream& operator<<(std::ostream& os, const Image& img) {
